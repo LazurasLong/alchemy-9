@@ -1,0 +1,5 @@
+//console.log("Not Matched");
+$("#ajax-preloader").fadeOut("fast");
+var element1 = $("#<%= id1 %>");
+var element2 = $("#<%= id2 %>");
+$.bootstrapGrowl("Element <strong>" + element1.data("name") + "</strong> didn't matched with <strong>" + element2.data("name") + "</strong>", { type: 'error' });

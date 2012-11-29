@@ -1,0 +1,32 @@
+<article class="module">
+	<header><h3>All Elements</h3></header>
+	
+		<table id="datatable_elements" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Element 1</th>
+					<th>Element 2</th>
+					<th>Created</th>
+					<th>Updated</th>
+					<th class="index_action">Edit</th>
+					<th class="index_action">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @elements.each do |element| %>
+				<tr class="<%= cycle("odd", "even") %>">
+					<td><%= image_tag element.image.url(:small) %></td>
+					<td><%= element.name %></td>
+					<td><%= element.father.try(:name) %></td>
+					<td><%= element.mother.try(:name) %></td>
+					<td><%= element.created_at %></td>
+					<td><%= element.updated_at %></td>
+					<td><%= link_to 'Edit', edit_admin_element_path(element), :class => "btn btn-primary" %></td>
+					<td><%= link_to 'Destroy', [:admin, element], confirm: 'Are you sure?', method: :delete, :class => "btn btn-danger" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+</article><!-- end of stats article -->

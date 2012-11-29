@@ -1,0 +1,14 @@
+<div style="font-weight: bold">Discovered Elements (double click an element to add it into the board)</div>
+<div id="discovered-elements">
+	<% @parent_elements.each do |element| %>
+    	<div class="freezed-element <%= element.name %>"  data-name="<%= element.name %>"></div>
+    <% end %>
+</div>
+
+<div style="font-weight: bold">Board (double click an element inside the board to remove it)</div>
+<div id="board">
+
+</div>
+<div id="ajax-preloader">
+  <div id="loading"></div>
+</div>

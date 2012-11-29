@@ -1,0 +1,10 @@
+<style>
+<% @elements.each do |element| %>
+.<%= element.name %> {
+	background: url("<%= element.image.url(:small) %>") center center no-repeat;
+}
+<% end %>
+</style>
+
+<%= raw @page.content %>
+<%= render "pages/partials/alchemy" %>

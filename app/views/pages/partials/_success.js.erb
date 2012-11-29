@@ -1,0 +1,18 @@
+$("#ajax-preloader").fadeOut("fast");
+var element1 = $("#<%= id1 %>");
+var element2 = $("#<%= id2 %>");
+
+setTimeout(function() {
+    $.bootstrapGrowl("Element <strong>" + element1.data("name") + "</strong> matched with <strong>" + element2.data("name") + "</strong> and created <strong><%= @element.name %></strong>", { type: 'success' });
+});
+
+var new_id = "element" + uniqueID();
+var new_element = $("<div data-name='<%= @element.name %>' id='" + new_id + "' class='element <%= @element.name %>'></div>");
+$("#board").append(new_element.hide().fadeIn());
+var position = element1.position();
+//alert("Left: " + position.left + ", Top:" + position.top);
+$("#"+new_id).css("left", position.left).css("top", position.top);
+elementMethods($(".element"));
+element1.fadeOut( function() { $(this).remove(); });
+element2.fadeOut( function() { $(this).remove(); });
+
