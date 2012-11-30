@@ -1,12 +1,6 @@
 $(function() {
   elementMethods($(".element"));
-  $(".freezed-element").dblclick(function() {
-    //alert($(this).data("name"));
-    var element_name = $(this).data('name');
-    var div_element = "<div class='element " + element_name + "' data-name='" + element_name + "' id='element" + uniqueID() + "'></div>";
-    $("#board").append($(div_element).hide().fadeIn());
-    elementMethods($(".element"));
-  });
+  activate_freezed_elements();
 });
 
 function elementMethods(element) { // Called on start of DOM and every time a new element is added
@@ -37,6 +31,21 @@ var uniqueID = function() { // http://arguments.callee.info/2008/10/31/generatin
   }; // NOTE: return value is a function reference
 }(); // execute immediately
 
+
+function add_to_discovered(element) {
+  if($("#discovered-elements").find("." + element).length < 1) {
+	$("#discovered-elements").append('<div data-name="' + element + '" class="freezed-element ' + element +'"></div>');
+  }
+}
+
+function activate_freezed_elements() {
+  $(".freezed-element").live("dblclick", function() {
+    element_name = $(this).data('name');
+    div_element = "<div class='element " + element_name + "' data-name='" + element_name + "' id='element" + uniqueID() + "'></div>";
+    $("#board").append($(div_element).hide().fadeIn());
+    elementMethods($(".element"));
+  });
+}
 
 /*
 // Just a simple script paradigm if you want to do it javascript based the check instead of server-side check.
