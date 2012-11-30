@@ -1,9 +1,9 @@
 $("#ajax-preloader").fadeOut("fast");
 var element1 = $("#<%= id1 %>");
 var element2 = $("#<%= id2 %>");
-
+var doc_height = window.innerHeight / 2;
 setTimeout(function() {
-    $.bootstrapGrowl("Element <strong>" + element1.data("name") + "</strong> matched with <strong>" + element2.data("name") + "</strong> and created <strong><%= @element.name %></strong>", { type: 'success' });
+    $.bootstrapGrowl("Element <strong>" + element1.data("name") + "</strong> matched with <strong>" + element2.data("name") + "</strong> and created <strong><%= @element.name %></strong>", { type: 'success', top_offset: doc_height, align: 'center' });
 });
 
 var new_id = "element" + uniqueID();

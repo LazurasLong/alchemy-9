@@ -2,4 +2,5 @@
 $("#ajax-preloader").fadeOut("fast");
 var element1 = $("#<%= id1 %>");
 var element2 = $("#<%= id2 %>");
-$.bootstrapGrowl("Element <strong>" + element1.data("name") + "</strong> didn't matched with <strong>" + element2.data("name") + "</strong>", { type: 'error' });
+var doc_height = window.innerHeight / 2;
+$.bootstrapGrowl("Element <strong>" + element1.data("name") + "</strong> didn't match with <strong>" + element2.data("name") + "</strong>", { type: 'error', top_offset: doc_height, align: 'center' });
