@@ -1,5 +1,5 @@
 <style>
-<% @elements.each do |element| %>
+<% @parent_elements.each do |element| %>
 .<%= element.name %> {
 	background: url("<%= element.image.url(:small) %>") center center no-repeat;
 }

@@ -1,5 +1,5 @@
 $("#ajax-preloader").fadeOut("fast");
-add_to_discovered("<%= @element.name %>");
+add_to_discovered("<%= @element.name %>", "<%= @element.image.url(:small) %>");
 var element1 = $("#<%= id1 %>");
 var element2 = $("#<%= id2 %>");
 var doc_height = window.innerHeight / 2;
@@ -10,6 +10,7 @@ setTimeout(function() {
 var new_id = "element" + uniqueID();
 var new_element = $("<div data-name='<%= @element.name %>' id='" + new_id + "' class='element <%= @element.name %>'></div>");
 $("#board").append(new_element.hide().fadeIn());
+
 var position = element1.position();
 //alert("Left: " + position.left + ", Top:" + position.top);
 $("#"+new_id).css("left", position.left).css("top", position.top);

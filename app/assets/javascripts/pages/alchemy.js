@@ -32,9 +32,10 @@ var uniqueID = function() { // http://arguments.callee.info/2008/10/31/generatin
 }(); // execute immediately
 
 
-function add_to_discovered(element) {
+function add_to_discovered(element, image) {
   if($("#discovered-elements").find("." + element).length < 1) {
 	$("#discovered-elements").append('<div data-name="' + element + '" class="freezed-element ' + element +'"></div>');
+	$("style").append("." + element + "{ background: url('"+ image +"') center center no-repeat }");
   }
 }
 
