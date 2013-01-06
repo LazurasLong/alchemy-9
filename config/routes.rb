@@ -1,7 +1,7 @@
 Gscms::Application.routes.draw do
-  
+
   devise_for :users, :skip => [:sessions, :passwords]
-  
+
   as :user do
     # sessions routes
     get         "/admin/login"    => "devise/sessions#new",             :as => :new_user_session
@@ -14,7 +14,7 @@ Gscms::Application.routes.draw do
     get         "password/reset"  => "devise/passwords#edit",    :as => :edit_user_password
     put         "password/forgot" => "devise/passwords#update"
   end
-  
+
   namespace :admin do
     resources :users,   :except => [:show]
     resources :elements,   :except => [:show]
@@ -22,10 +22,10 @@ Gscms::Application.routes.draw do
     resources :menus,   :except => [:show] do
        post :page_sort, :on => :collection
     end
-    
+
     get "settings/homepage"       => "settings#homepage",      :as => :settings
     post "settings/homepage-save" => "settings#homepage_save", :as => :homepage_save
-     
+
     resources :pages do
        get   "sitemap",       :on => :collection, :as => :sitemap
        get   "clear_cache",   :on => :collection, :as => :clear_cache
@@ -33,9 +33,11 @@ Gscms::Application.routes.draw do
   end
 
   get "check_elements" => "pages#check_elements", :as => :check_elements
+  get "all" => "pages#all", :as => :parrent_elements
+
   get ":permalink" => "pages#show", :as => :permalink
   root :to => "pages#index"
-  
+
    # Note: This route will make all actions in every controller accessible via GET requests.
    # match ':controller(/:action(/:id(.:format)))'
 end
